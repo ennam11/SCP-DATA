@@ -290,14 +290,13 @@ function renderHome() {
   root.innerHTML = `
     <section class="hero">
 
-      <div class="eyebrow">
-        SCP FRIEND UNIVERSE
-      </div>
+<div class="eyebrow">
+  GYUBBANG company
+</div>
 
-      <h1>
-        친구들의 세계관 데이터베이스
-      </h1>
-
+<h1>
+  THE LAST PROTOCOLTHE(마지막 大재앙)
+</h1>
       <p>
         세대, SCP, 스토리와 티어를 한 곳에서 확인하세요.
       </p>
