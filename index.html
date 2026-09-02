@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCP FRIEND DATABASE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="drawer" class="drawer">
+  <div class="drawer-head">SCP FRIEND DATABASE <button id="closeMenu">×</button></div>
+  <div class="menu-section">세대</div>
+  <button class="menu-item" data-view="generation" data-gen="1">1세대</button>
+  <button class="menu-item" data-view="generation" data-gen="2">2세대</button>
+  <button class="menu-item" data-view="generation" data-gen="3">3세대</button>
+  <button class="menu-item" data-view="generation" data-gen="4">4세대</button>
+  <div class="menu-section">세계관</div>
+  <button class="menu-item" data-view="story">📖 세계관 스토리</button>
+  <button class="menu-item" data-view="tier">⚔️ 실시간 티어표</button>
+  <button class="menu-item" data-view="events">📜 사건 기록</button>
+  <button class="menu-item" data-view="updates">📰 업데이트 기록</button>
+  <div class="menu-section">관리</div>
+  <button class="menu-item" id="adminBtn">⚙ 관리자</button>
+</div>
+<div id="shade"></div>
+
+<header>
+  <button id="openMenu" class="hamb">☰</button>
+  <div class="brand">SCP FRIEND DATABASE</div>
+  <div id="status" class="status">연결 중...</div>
+</header>
+
+<main id="app">
+  <section class="hero">
+    <div class="eyebrow">SCP FRIEND UNIVERSE</div>
+    <h1>친구들의 세계관 데이터베이스</h1>
+    <p>세대, SCP, 스토리와 티어를 한 곳에서 확인하세요.</p>
+  </section>
+  <section class="panel">
+    <h2>최근 업데이트</h2>
+    <div id="homeUpdates"></div>
+  </section>
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
