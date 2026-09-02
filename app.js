@@ -33,5 +33,4 @@ document.getElementById("openMenu").onclick=()=>{document.getElementById("drawer
 document.getElementById("closeMenu").onclick=()=>closeMenu();document.getElementById("shade").onclick=()=>closeMenu();
 function closeMenu(){document.getElementById("drawer").classList.remove("open");document.getElementById("shade").classList.remove("show")}
 document.querySelectorAll(".menu-item[data-view]").forEach(b=>b.onclick=()=>{closeMenu();const v=b.dataset.view;if(v==="generation")renderGen(b.dataset.gen);else if(v==="tier")renderTier();else if(v==="story")renderText("story","세계관 스토리");else if(v==="events")renderEvents();else if(v==="updates")renderUpdates()});
-document.getElementById("adminBtn").onclick=()=>{closeMenu();location.href="admin.html"};
 if(safeConfig()){try{const app=initializeApp(firebaseConfig);db=getDatabase(app);onValue(ref(db,"database"),snap=>{if(snap.exists()){setData(snap.val());renderHome()}else{setData(demo);renderHome()}});onValue(ref(db,"database"),()=>status.textContent="● 실시간 연결")}catch(e){setData(demo);status.textContent="○ 데모(설정 오류)";renderHome()}}else{setData(demo);renderHome()}
