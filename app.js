@@ -337,7 +337,7 @@ function renderHome() {
     <section class="hero">
 
       <div class="eyebrow">
-        GYUBBANG COMPANY
+        GYUBBANG company
       </div>
 
       <h1>
