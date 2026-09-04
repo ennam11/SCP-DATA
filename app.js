@@ -19,7 +19,7 @@ const demo = {
       {
         id: "SCP-JEC-001",
         name: "재민이의 눈",
-        risk: "S — TRANSCENDENT",
+        risk: "SS — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
@@ -55,7 +55,7 @@ const demo = {
       {
         id: "SCP-STP-404",
         name: "시온이의 삼각팬티",
-        risk: "A — TRANSCENDENT",
+        risk: "S — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
@@ -277,15 +277,15 @@ const demo = {
     },
     {
       tier: "SS",
-      items: ["SCP-BOS-???", "SCP-TCJ-999"]
+      items: ["SCP-BOS-???", "SCP-TCJ-999", "SCP-JEC-001"]
     },
     {
       tier: "S",
-      items: ["SCP-JEC-001"]
+      items: ["SCP-STP-404"]
     },
     {
       tier: "A",
-      items: ["SCP-STP-404"]
+      items: ["SCP-RMS-202"]
     }
   ],
 
@@ -298,7 +298,7 @@ const demo = {
 
   updates: [
     {
-      text: "SCP-BOS-??? BLACK OF SIHU 등록",
+      text: "2세대의 문을 연 신규 SCP-RMS-202",
       time: "최신 데이터"
     },
     {
