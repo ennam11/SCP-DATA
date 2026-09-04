@@ -19,7 +19,7 @@ const demo = {
       {
         id: "SCP-JEC-001",
         name: "재민이의 눈",
-        risk: "A — TRANSCENDENT",
+        risk: "S+ — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
@@ -91,7 +91,7 @@ const demo = {
       {
         id: "SCP-TCJ-999",
         name: "자비스",
-        risk: "S+ — TRANSCENDENT",
+        risk: "SS — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
@@ -129,7 +129,7 @@ const demo = {
       {
         id: "SCP-JSI-000",
         name: "일루미나티",
-        risk: "S+ — TRANSCENDENT",
+        risk: "SSS — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
@@ -172,7 +172,7 @@ const demo = {
       {
         id: "SCP-BOS-???",
         name: "BLACK OF SIHU",
-        risk: "Ω∞+ — UNMEASURABLE",
+        risk: "SS — UNMEASURABLE",
         containment: "UNCONTAINABLE",
 
         description:
@@ -226,20 +226,20 @@ const demo = {
 
   tiers: [
     {
-      tier: "Ω∞+",
-      items: ["SCP-BOS-???"]
+      tier: "SSS",
+      items: ["SCP-JSI-000"]
     },
     {
-      tier: "S+",
-      items: ["SCP-JSI-000", "SCP-TCJ-999"]
+      tier: "SS",
+      items: ["SCP-BOS-???", "SCP-TCJ-999"]
     },
     {
       tier: "S",
-      items: ["SCP-STP-404"]
+      items: ["SCP-JEC-001"]
     },
     {
       tier: "A",
-      items: ["SCP-JEC-001"]
+      items: ["SCP-STP-404"]
     }
   ],
 
