@@ -19,7 +19,7 @@ const demo = {
       {
         id: "SCP-JEC-001",
         name: "재민이의 눈",
-        risk: "S+ — TRANSCENDENT",
+        risk: "S — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
@@ -55,7 +55,7 @@ const demo = {
       {
         id: "SCP-STP-404",
         name: "시온이의 삼각팬티",
-        risk: "S — TRANSCENDENT",
+        risk: "A — TRANSCENDENT",
         containment: "UNCONTAINABLE",
 
         description:
