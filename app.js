@@ -21,7 +21,7 @@ const demo = {
 
   name: "재민이의 눈",
 
-  risk: "S — TRANSCENDENT",
+  risk: "S+ — TRANSCENDENT",
 
   containment: "UNCONTAINABLE",
 
@@ -109,7 +109,7 @@ const demo = {
 
   name: "자비스",
 
-  risk: "S+ — TRANSCENDENT",
+  risk: "SS — TRANSCENDENT",
 
   containment: "UNCONTAINABLE",
 
@@ -160,7 +160,7 @@ const demo = {
 
   name: "일루미나티",
 
-  risk: "S+ — TRANSCENDENT",
+  risk: "SSS — TRANSCENDENT",
 
   containment: "UNCONTAINABLE — REALITY BOUNDARY TRANSCENDENT",
 
@@ -210,7 +210,7 @@ const demo = {
 {
   id: "SCP-BOS-???",
   name: "BLACK OF SIHU",
-  risk: "Ω∞+ — UNMEASURABLE",
+  risk: "SS — UNMEASURABLE",
   containment: "UNCONTAINABLE",
 
   description:
@@ -250,23 +250,28 @@ const demo = {
   */
 
   tiers: [
-    {
-      tier: "Ω∞+",
-      items: ["SCP-BOS-???"]
-    },
-    {
-      tier: "S+",
-      items: ["SCP-JSI-000", "SCP-TCJ-999"]
-    },
-{
-  tier: "S",
-  items: ["SCP-STP-404", "SCP-JEC-001"]
-},
-{
-  tier: "A",
-  items: []
-}
-  ],
+tiers: [
+  {
+    tier: "SSS",
+    items: ["SCP-JSI-000"]
+  },
+  {
+    tier: "SS",
+    items: ["SCP-TCJ-999", "SCP-BOS-???"]
+  },
+  {
+    tier: "S+",
+    items: ["SCP-JEC-001"]
+  },
+  {
+    tier: "S",
+    items: ["SCP-STP-404"]
+  },
+  {
+    tier: "A",
+    items: []
+  }
+],
 
   story: {
     title: "SCP FRIEND UNIVERSE",
