@@ -286,12 +286,20 @@ const demo = {
     {
       tier: "A",
       items: ["SCP-RMS-202"]
+    },
+    {
+      tier: "B",
+      items: ["없음"]
+    },
+    {
+      tier: "C",
+      items: ["없음"]
     }
   ],
 
   story: {
-    title: "SCP FRIEND UNIVERSE",
-    body: "이곳에 세계관의 시작과 세대별 역사를 작성하세요."
+    title: "THE LAST PROTOCOLTHE",
+    body: "SCP 격리 자료 과학 수사대 본부 사이트"
   },
 
   events: [],
