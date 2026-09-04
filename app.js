@@ -277,16 +277,20 @@ tiers: [
 
   events: [],
 
-  updates: [
-    {
-      text: "SCP-BOS-??? BLACK OF SIHU 등록",
-      time: "최신 데이터"
-    },
-    {
-      text: "1세대 SCP 능력 및 티어 데이터 업데이트",
-      time: "최신 데이터"
-    }
-  ]
+updates: [
+  {
+    title: "1세대 SCP 티어 업데이트",
+    date: "최신 데이터"
+  },
+  {
+    title: "1세대 SCP 능력 데이터 업데이트",
+    date: "최신 데이터"
+  },
+  {
+    title: "티어 시스템 정리",
+    date: "최신 데이터"
+  }
+],
 };
 
 
