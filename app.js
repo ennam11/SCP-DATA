@@ -154,7 +154,6 @@ const demo = {
          SCP-JSI-000
          ========================= */
 
-      {
 {
   id: "SCP-JSI-000",
 
@@ -206,7 +205,6 @@ const demo = {
          BLACK OF SIHU
          ========================= */
 
-      {
 {
   id: "SCP-BOS-???",
   name: "BLACK OF SIHU",
@@ -249,7 +247,6 @@ const demo = {
    =========================
   */
 
-  tiers: [
 tiers: [
   {
     tier: "SSS",
