@@ -104,7 +104,7 @@ const demo = {
          SCP-TCJ-999
          ========================= */
 
-      {
+{
   id: "SCP-TCJ-999",
 
   name: "자비스",
@@ -208,7 +208,7 @@ const demo = {
 {
   id: "SCP-BOS-???",
   name: "BLACK OF SIHU",
-  risk: "SS — TRANSCENDENT",
+  risk: "SS — UNMEASURABLE",
   containment: "UNCONTAINABLE",
 
   description:
@@ -277,6 +277,11 @@ tiers: [
 
   events: [],
 
+  /* =========================
+     업데이트
+     ========================= */
+
+  updates: [
 updates: [
   {
     text: "1세대 SCP 티어 업데이트",
@@ -290,7 +295,7 @@ updates: [
     text: "티어 시스템 정리",
     time: "최신 데이터"
   }
-],
+]
 };
 
 
@@ -328,6 +333,7 @@ function renderHome() {
 <h1>
   THE LAST PROTOCOLTHE(마지막 大재앙)
 </h1>
+
       <p>
         세대, SCP, 스토리와 티어를 한 곳에서 확인하세요.
       </p>
@@ -341,13 +347,13 @@ function renderHome() {
       </h2>
 
       ${
-        [...(data.updates || []), ...(demo.updates || [])]
+        (data.updates || [])
           .slice()
           .reverse()
           .slice(0, 8)
           .map(x => `
             <div class="update">
-              ${esc(x.text || x.title || "")}
+              ${esc(x.text || x.title || "업데이트")}
               <span class="small">
                 ${esc(x.time || x.date || "")}
               </span>
@@ -613,13 +619,14 @@ function genFor(id) {
       return;
     }
   }
-    }
+}
+
 
 /* =========================
    티어표
    ========================= */
 
-function renderTiers() {
+function renderTier() {
 
   root.innerHTML = `
 
@@ -633,69 +640,50 @@ function renderTiers() {
     <section class="panel">
 
       <div class="eyebrow">
-        POWER RANKING
+        LIVE POWER RANKING
       </div>
 
       <h1>
-        SCP 티어표
+        실시간 티어표
       </h1>
 
-      <div class="tier-list">
+      ${
+        (data.tiers || [])
+          .map(t => `
 
-        ${
-          (data.tiers || [])
-            .map(t => `
+            <div class="tier-row">
 
-              <div class="tier-row">
+              <div class="tier-label">
+                ${esc(t.tier)}
+              </div>
 
-                <div class="tier-name">
-                  ${esc(t.tier)}
-                </div>
+              <div class="tier-items">
 
-                <div class="tier-items">
+                ${
+                  (t.items || [])
+                    .map(id => {
 
-                  ${
-                    (t.items || [])
-                      .map(id => {
+                      const x = find(id);
 
-                        const x = find(id);
+                      return `
+                        <div class="tier-chip">
+                          ${esc(x?.name || id)}
+                        </div>
+                      `;
 
-                        return `
-                          <button
-                            class="tier-item"
-                            onclick="detail('${escAttr(id)}')"
-                          >
-
-                            <span class="code">
-                              ${esc(id)}
-                            </span>
-
-                            ${
-                              x
-                                ? esc(x.name)
-                                : ""
-                            }
-
-                          </button>
-                        `;
-
-                      })
-                      .join("")
-                    ||
-                    `<span class="small">
-                      등록된 SCP 없음
-                    </span>`
-                  }
-
-                </div>
+                    })
+                    .join("")
+                }
 
               </div>
 
-            `)
-            .join("")
-        }
+            </div>
 
-      </div>
+          `)
+          .join("")
+        ||
+        '<div class="empty">티어표가 없습니다.</div>'
+      }
 
     </section>
   `;
@@ -703,13 +691,12 @@ function renderTiers() {
 
 
 /* =========================
-   스토리
+   세계관 스토리
    ========================= */
 
-function renderStory() {
+function renderText(kind, title) {
 
-  const story =
-    data.story || {};
+  const obj = data[kind] || {};
 
   root.innerHTML = `
 
@@ -723,23 +710,21 @@ function renderStory() {
     <section class="panel">
 
       <div class="eyebrow">
-        STORY
+        WORLD BUILDING
       </div>
 
       <h1>
-        ${esc(
-          story.title ||
-          "SCP FRIEND UNIVERSE"
-        )}
+        ${esc(obj.title || title)}
       </h1>
 
-      <div class="story">
-
+      <div
+        class="muted"
+        style="white-space:pre-wrap;line-height:1.8"
+      >
         ${esc(
-          story.body ||
-          "등록된 스토리가 없습니다."
+          obj.body ||
+          "내용이 없습니다."
         )}
-
       </div>
 
     </section>
@@ -748,7 +733,57 @@ function renderStory() {
 
 
 /* =========================
-   업데이트
+   사건 기록
+   ========================= */
+
+function renderEvents() {
+
+  root.innerHTML = `
+
+    <button
+      class="back"
+      onclick="home()"
+    >
+      ← 홈
+    </button>
+
+    <section class="panel">
+
+      <h1>
+        📜 사건 기록
+      </h1>
+
+      ${
+        (data.events || [])
+          .map(e => `
+
+            <div class="ability">
+
+              <b>
+                ${esc(e.title || "사건")}
+              </b>
+
+              <br>
+
+              <span class="muted">
+                ${esc(e.body || "")}
+              </span>
+
+            </div>
+
+          `)
+          .join("")
+        ||
+        '<div class="empty">기록된 사건이 없습니다.</div>'
+      }
+
+    </section>
+  `;
+}
+
+
+/* =========================
+   업데이트 기록
    ========================= */
 
 function renderUpdates() {
@@ -764,36 +799,22 @@ function renderUpdates() {
 
     <section class="panel">
 
-      <div class="eyebrow">
-        DATABASE LOG
-      </div>
-
       <h1>
-        업데이트 기록
+        📰 업데이트 기록
       </h1>
 
       ${
-        [...(data.updates || []), ...(demo.updates || [])]
+        (data.updates || [])
           .slice()
           .reverse()
           .map(e => `
 
             <div class="update">
 
-              ${esc(
-                e.text ||
-                e.title ||
-                ""
-              )}
+              ${esc(e.text || e.title || "업데이트")}
 
               <span class="small">
-
-                ${esc(
-                  e.time ||
-                  e.date ||
-                  ""
-                )}
-
+                ${esc(e.time || e.date || "")}
               </span>
 
             </div>
@@ -801,7 +822,7 @@ function renderUpdates() {
           `)
           .join("")
         ||
-        '<div class="empty">업데이트 기록이 없습니다.</div>'
+        '<div class="empty">업데이트가 없습니다.</div>'
       }
 
     </section>
@@ -810,272 +831,131 @@ function renderUpdates() {
 
 
 /* =========================
-   이벤트
+   보안용 HTML 문자 처리
    ========================= */
 
-function renderEvents() {
+function esc(s) {
 
-  const events =
-    data.events || [];
+  return String(s ?? "").replace(
+    /[&<>"']/g,
+    c => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[c])
+  );
+}
 
-  root.innerHTML = `
 
-    <button
-      class="back"
-      onclick="home()"
-    >
-      ← 홈
-    </button>
+function escAttr(s) {
 
-    <section class="panel">
+  return esc(s).replace(
+    /`/g,
+    "&#096;"
+  );
+}
 
-      <div class="eyebrow">
-        EVENTS
-      </div>
 
-      <h1>
-        사건 기록
-      </h1>
+/* =========================
+   전역 함수
+   ========================= */
 
-      ${
-        events.length
+window.home = renderHome;
+window.detail = detail;
+window.genFor = genFor;
 
-          ? events
-              .map(e => `
 
-                <div class="event">
+/* =========================
+   메뉴
+   ========================= */
 
-                  <h3>
-                    ${esc(
-                      e.title ||
-                      "미등록 사건"
-                    )}
-                  </h3>
+document
+  .getElementById("openMenu")
+  .onclick = () => {
 
-                  <p>
-                    ${esc(
-                      e.description ||
-                      e.body ||
-                      ""
-                    )}
-                  </p>
+    document
+      .getElementById("drawer")
+      .classList
+      .add("open");
 
-                </div>
+    document
+      .getElementById("shade")
+      .classList
+      .add("show");
+  };
 
-              `)
-              .join("")
 
-          : `
-              <div class="empty">
-                등록된 사건 기록이 없습니다.
-              </div>
-            `
+document
+  .getElementById("closeMenu")
+  .onclick = () => closeMenu();
+
+
+document
+  .getElementById("shade")
+  .onclick = () => closeMenu();
+
+
+function closeMenu() {
+
+  document
+    .getElementById("drawer")
+    .classList
+    .remove("open");
+
+  document
+    .getElementById("shade")
+    .classList
+    .remove("show");
+}
+
+
+/* =========================
+   메뉴 버튼 연결
+   ========================= */
+
+document
+  .querySelectorAll(".menu-item[data-view]")
+  .forEach(b => {
+
+    b.onclick = () => {
+
+      closeMenu();
+
+      const v = b.dataset.view;
+
+      if (v === "generation") {
+
+        renderGen(
+          b.dataset.gen
+        );
+
+      } else if (v === "tier") {
+
+        renderTier();
+
+      } else if (v === "story") {
+
+        renderText(
+          "story",
+          "세계관 스토리"
+        );
+
+      } else if (v === "events") {
+
+        renderEvents();
+
+      } else if (v === "updates") {
+
+        renderUpdates();
       }
-
-    </section>
-  `;
-}
+    };
+  });
 
 
 /* =========================
-   검색
-   ========================= */
-
-function searchSCP(keyword) {
-
-  const q =
-    String(keyword || "")
-      .trim()
-      .toLowerCase();
-
-  if (!q) {
-
-    home();
-
-    return;
-  }
-
-  const results = [];
-
-  for (
-    const [generation, list]
-    of Object.entries(
-      data.generations || {}
-    )
-  ) {
-
-    for (const x of list || []) {
-
-      const text = [
-
-        x.id,
-        x.name,
-        x.risk,
-        x.containment,
-        x.description,
-
-        ...(x.abilities || []),
-        ...(x.defense || []),
-
-        x.ultimate,
-        x.quote
-
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      if (text.includes(q)) {
-
-        results.push({
-          ...x,
-          generation
-        });
-
-      }
-    }
-  }
-
-
-  root.innerHTML = `
-
-    <button
-      class="back"
-      onclick="home()"
-    >
-      ← 홈
-    </button>
-
-    <section class="panel">
-
-      <div class="eyebrow">
-        SEARCH
-      </div>
-
-      <h1>
-        검색 결과
-      </h1>
-
-      <p class="muted">
-        "${esc(keyword)}"
-      </p>
-
-      <div class="grid">
-
-        ${
-          results.length
-
-            ? results
-                .map(x => `
-
-                  <div
-                    class="card"
-                    onclick="detail('${escAttr(x.id)}')"
-                  >
-
-                    <div class="code">
-                      ${esc(x.id)}
-                    </div>
-
-                    <div class="title">
-                      ${esc(x.name)}
-                    </div>
-
-                    <span class="pill">
-                      ${esc(x.risk || "미정")}
-                    </span>
-
-                    <div class="small">
-                      ${esc(x.generation)}세대
-                    </div>
-
-                  </div>
-
-                `)
-                .join("")
-
-            : `
-                <div class="empty">
-                  검색 결과가 없습니다.
-                </div>
-              `
-        }
-
-      </div>
-
-    </section>
-  `;
-}
-
-
-/* =========================
-   홈으로 이동
-   ========================= */
-
-function home() {
-
-  renderHome();
-
-}
-
-
-/* =========================
-   전역 함수 등록
-   ========================= */
-
-window.home =
-  home;
-
-window.renderHome =
-  renderHome;
-
-window.renderGen =
-  renderGen;
-
-window.detail =
-  detail;
-
-window.renderTiers =
-  renderTiers;
-
-window.renderStory =
-  renderStory;
-
-window.renderUpdates =
-  renderUpdates;
-
-window.renderEvents =
-  renderEvents;
-
-window.searchSCP =
-  searchSCP;
-
-
-/* =========================
-   HTML 이스케이프
-   ========================= */
-
-function esc(value) {
-
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-
-function escAttr(value) {
-
-  return String(value ?? "")
-    .replaceAll("\\", "\\\\")
-    .replaceAll("'", "\\'");
-}
-
-
-/* =========================
-   Firebase 연결
+   Firebase 실시간 연결
    ========================= */
 
 if (safeConfig()) {
@@ -1083,17 +963,13 @@ if (safeConfig()) {
   try {
 
     const app =
-      initializeApp(
-        firebaseConfig
-      );
+      initializeApp(firebaseConfig);
 
     db =
       getDatabase(app);
 
-
     onValue(
       ref(db, "database"),
-
       snap => {
 
         if (snap.exists()) {
@@ -1102,61 +978,50 @@ if (safeConfig()) {
             snap.val()
           );
 
+          renderHome();
+
         } else {
 
           setData(
             demo
           );
 
+          renderHome();
         }
-
-        renderHome();
-
       }
     );
 
-
     onValue(
       ref(db, "database"),
-
       () => {
 
         status.textContent =
           "● 실시간 연결";
-
       }
     );
-
 
   } catch (e) {
 
     console.error(e);
 
-    setData(
-      demo
-    );
+    setData(demo);
 
     status.textContent =
       "○ 데모(설정 오류)";
 
     renderHome();
-
   }
-
 
 } else {
 
-  setData(
-    demo
-  );
+  setData(demo);
 
   renderHome();
-
 }
 
 
 /* =========================
-   최초 실행
+   초기 화면
    ========================= */
 
 renderHome();
