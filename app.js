@@ -281,8 +281,7 @@ tiers: [
      업데이트
      ========================= */
 
-  updates: [
-updates: [
+  updates:
   {
     text: "1세대 SCP 티어 업데이트",
     time: "최신 데이터"
@@ -870,21 +869,18 @@ window.genFor = genFor;
 /* =========================
    메뉴
    ========================= */
-
 document
-  .getElementById("openMenu")
-  .onclick = () => {
+const openMenu = document.getElementById("openMenu");
 
-    document
-      .getElementById("drawer")
-      .classList
-      .add("open");
+if (openMenu) {
+  openMenu.onclick = () => {
+    const drawer = document.getElementById("drawer");
+    const shade = document.getElementById("shade");
 
-    document
-      .getElementById("shade")
-      .classList
-      .add("show");
+    if (drawer) drawer.classList.add("open");
+    if (shade) shade.classList.add("show");
   };
+}
 
 
 document
