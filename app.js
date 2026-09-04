@@ -298,8 +298,8 @@ const demo = {
   ],
 
   story: {
-    title: "THE LAST PROTOCOLTHE",
-    body: "SCP 격리 자료 과학 수사대 본부 사이트"
+    title: "SCP 중앙특수관리본부",
+    body: "SCP 개체 격리·관리 및 특수사건 대응 본부"
   },
 
   events: [],
@@ -310,7 +310,7 @@ const demo = {
       time: "최신 데이터"
     },
     {
-      text: "1세대 SCP 능력 및 티어 데이터 업데이트",
+      text: "새로운 타이틀로 개선",
       time: "최신 데이터"
     }
   ]
@@ -349,11 +349,11 @@ function renderHome() {
       </div>
 
       <h1>
-        THE LAST PROTOCOLTHE(마지막 大재앙)
+        SCP 중앙특수관리본부
       </h1>
 
       <p>
-        SCP 격리 자료 과학 수사대 본부 사이트
+        SCP 개체 격리·관리 및 특수사건 대응 본부
       </p>
 
     </section>
